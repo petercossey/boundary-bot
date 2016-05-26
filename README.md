@@ -5,7 +5,7 @@ Server side (Debian 7)
 ----------------------
 
 * Install:
-  * sudo apt-get install postgresql libpq-dev postgresql-9.4-postgis postgresql-contrib
+  * sudo apt-get install postgresql libpq-dev postgresql-9.5-postgis postgresql-contrib
 
 * Enable extensions:
   * sudo -u postgres psql
@@ -22,7 +22,7 @@ Client side (Windows 7)
 ----------------------
 
 * Downloaded and installed latest pgadmin from http://www.pgadmin.org/download/windows.php (with installer)
-* Downloaded PostGIS for windows from http://download.osgeo.org/postgis/windows/pg94/ and run bin\postgisgui\shp2pgsql-gui.exe
+* Downloaded PostGIS for windows from http://download.osgeo.org/postgis/windows/pg95/ and run bin\postgisgui\shp2pgsql-gui.exe
 * Set up SSH tunnel on port 5432 to VM
 * Imported .shp file using shp2pgsql-gui into (example dataset storing Australian LGAs is at
   https://github.com/thislittleduck/au-lga/tree/master/data)
