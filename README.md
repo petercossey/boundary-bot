@@ -44,13 +44,13 @@ After importing each dataset create a new record in `datasets` table, e.g.
     INSERT INTO public.datasets (name, geofield, token) VALUES ('lga11aaust', 'geom', 'a606c3e53600a16864619f8db83faa71');
 
 Here `name` is dataset table name, `geofield` is a geometry field in this table to search agains, `token` is API key to access the
-results. Thus each dataset can have own columns structure and own geometry field. Each result returned (see below) contains all
-dataset fields except geometry field itself.
+results, `origin` is an optional value for `Access-Control-Allow-Origin` set in the bot response. Thus each dataset can have own 
+columns structure and own geometry field. Each result returned (see below) contains all dataset fields except geometry field itself.
 
 Copy `example.settings.php` to `settings.php` and update if with actual Postgres connection settings.
 
 Example request:
 
-    http://bbot.lc/?dataset=lga11aaust&api_key=a606c3e53600a16864619f8db83faa71&lat=151.215913&lon=-33.874394.
+    http://bbot.lc/?dataset=lga11aaust&api_key=a606c3e53600a16864619f8db83faa71&lon=151.215913&lat=-33.874394.
 
 Returns JSON with list of all results from given dataset for which given point is inside `geofield` geometry.

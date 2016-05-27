@@ -17,15 +17,16 @@ if (file_exists('settings.php')) {
     $dataset = pg_escape_string($db_connection, $_GET['dataset']);
     $api_key = $_GET['api_key'];
 
-    $db_result = pg_query_params($db_connection, 'SELECT datasets.geofield FROM public.datasets WHERE name = $1 AND token = $2;', array(
+    $db_result = pg_query_params($db_connection, 'SELECT datasets.geofield, datasets.origin FROM public.datasets WHERE name = $1 AND token = $2;', array(
       'name' => $dataset,
       'api_key' => $api_key,
     ));
 
     if ($db_result && $dataset_info = pg_fetch_row($db_result)) {
       $geofield = $dataset_info[0];
+      $origin = $dataset_info[1];
 
-      $db_result2 = pg_query($db_connection, "SELECT * FROM public.$dataset WHERE ST_Contains($dataset.$geofield, ST_GeomFromText('POINT($lat $lon)'));");
+      $db_result2 = pg_query($db_connection, "SELECT * FROM public.$dataset WHERE ST_Contains($dataset.$geofield, ST_GeomFromText('POINT($lon $lat)'));");
 
       while ($row = pg_fetch_assoc($db_result2)) {
         unset($row[$geofield]);
@@ -36,4 +37,7 @@ if (file_exists('settings.php')) {
 }
 
 header('Content-type: application/json');
+if ($origin) {
+  header('Access-Control-Allow-Origin: ' . $origin);
+}
 print json_encode($result);
