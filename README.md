@@ -1,22 +1,23 @@
 Installation
 ============
 
-Server side (Debian 7)
+Server side
 ----------------------
 
 * Install:
-  * sudo apt-get install postgresql libpq-dev postgresql-9.5-postgis postgresql-contrib
+  * `sudo apt-get install postgresql libpq-dev postgresql-9.5-postgis postgresql-contrib`  (Debian 7)
+  * `sudo apt-get install postgresql libpq-dev postgresql-9.3-postgis-2.1 postgresql-contrib` (Ubuntu 16.04)
 
 * Enable extensions:
-  * sudo -u postgres psql
-  * \password postgres (set password for postgres user)
-  * CREATE USER username WITH SUPERUSER;
-  * ALTER USER username PASSWORD your_password;
-  * CREATE EXTENSION postgis;
-  * CREATE EXTENSION postgis_topology;
-  * CREATE EXTENSION fuzzystrmatch;
-  * CREATE EXTENSION postgis_tiger_geocoder;
-  * \q
+  * `sudo -u postgres psql`
+  * `\password postgres` (after that set password for postgres user)
+  * `CREATE USER username WITH SUPERUSER;`
+  * `ALTER USER username PASSWORD 'your_password';`
+  * `CREATE EXTENSION postgis;`
+  * `CREATE EXTENSION postgis_topology;`
+  * `CREATE EXTENSION fuzzystrmatch;`
+  * `CREATE EXTENSION postgis_tiger_geocoder;`
+  * `\q`
 
 Client side (Windows 7)
 ----------------------
